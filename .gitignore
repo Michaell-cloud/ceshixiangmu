@@ -1,0 +1,32 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 模型和数据（不提交到版本控制）
+PanoWorld/model_ckpt/*.pt
+PanoWorld/model_ckpt/*.ckpt
+PanoWorld/data/
+PanoWorld/outputs/
+
+# Colab / Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# 日志
+*.log
+
+# Qoder IDE
+.qoder/
