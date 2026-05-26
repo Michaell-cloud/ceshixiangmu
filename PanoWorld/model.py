@@ -453,11 +453,10 @@ class PanoWorldLRM(nn.Module):
         return rearrange(x, "b (v l) d -> (b v) l d", v=v)
 
     def _run_transformer_block(self, block, x, prope, stage, info):
-        if torch.is_grad_enabled():
-            return torch.utils.checkpoint.checkpoint(
-                block, x, prope, stage, info, use_reentrant=False
-            )
-        return block(x, prope, stage, info)
+        # Always use checkpoint to save memory during inference on T4 GPU
+        return torch.utils.checkpoint.checkpoint(
+            block, x, prope, stage, info, use_reentrant=False
+        )
 
     @torch.no_grad()
     def load_ckpt(self, load_path):
